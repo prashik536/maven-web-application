@@ -6,7 +6,7 @@ pipeline{
     stages {
         stage('continuous download') {
             steps {
-                git 'https://github.com/mohan0306/simple-java-maven-app.git'
+                git 'https://github.com/mohan0306/maven-web-application.git'
             }
                
         }
