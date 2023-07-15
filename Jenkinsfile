@@ -24,8 +24,7 @@ pipeline{
         }
         stage('continuous Deliver on Webserver') {
             steps {
-                sh 'cd /root'
-                sh 'ssh -i ssh-webserver.txt root@172.31.94.211 '
+                sh 'ssh root@172.31.94.211 '
             }
         } 
 }
