@@ -15,14 +15,18 @@ pipeline{
                 sh 'mvn clean install'
             }
         }
-            stage('continuous upload') {
+            stage('continuous upload/backup') {
             steps {
                 sh 'cp /root/.jenkins/workspace/maven-web-app-deploy/target/maven-web-application.war /root/apache/apache-tomcat-9.0.75/webapps'
                 sh 'cp /root/.jenkins/workspace/maven-web-app-deploy/target/maven-web-application.war /mnt/Backup_snapshot'
-//              sh 'scp /root/.jenkins/workspace/Game_Of_life/gameoflife-web/target/gameoflife.war ansible@172.31.86.205:/mnt'
             }
                
         }
+        stage('continuous Deliver on Webserver') {
+            steps {
+                sh 'ssh -i ssh-webserver.txt root@172.31.94.211 '
+            }
+        } 
 }
    
 }
