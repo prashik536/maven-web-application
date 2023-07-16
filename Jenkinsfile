@@ -1,8 +1,8 @@
 
-currentBuild.displayName = "simple-java-maven-app-#"+currentBuild.number
+currentBuild.displayName = "maven-web-application-#"+currentBuild.number
+# Declarative pipeline
 pipeline{
-    agent any
-    
+    agent any    
     stages {
         stage('continuous download') {
             steps {
