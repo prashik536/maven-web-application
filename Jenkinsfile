@@ -1,6 +1,5 @@
 
 currentBuild.displayName = "maven-web-application-#"+currentBuild.number
-# Declarative pipeline
 pipeline{
     agent any    
     stages {
