@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        TOMCAT_PATH = '/root/apache/apache-tomcat-9.0.82'
+        TOMCAT_PATH = '/root/apache-tomcat-9.0.82'
         BACKUP_PATH = '/mnt/Backup_snapshot'
         REMOTE_SERVER = 'root@172.31.47.27'
         REMOTE_TOMCAT_PATH = '/mnt/apache-tomcat-9.0.82'
