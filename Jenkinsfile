@@ -19,8 +19,8 @@ pipeline {
         }
         stage('continuous upload/backup') {
             steps {
-                sh "/root/.jenkins/workspace/maven-web-application/target/maven-web-application.war $TOMCAT_PATH/webapps/"
-                sh "/root/.jenkins/workspace/maven-web-application/target/maven-web-application.war $BACKUP_PATH/"
+                sh "cp /root/.jenkins/workspace/maven-web-application/target/maven-web-application.war $TOMCAT_PATH/webapps/"
+                sh "cp /root/.jenkins/workspace/maven-web-application/target/maven-web-application.war $BACKUP_PATH/"
             }
         }
         stage('continuous Deliver on Webserver') {
