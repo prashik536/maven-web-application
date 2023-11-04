@@ -19,18 +19,18 @@ pipeline {
         }
         stage('continuous upload/backup') {
             steps {
-                sh "cp /root/.jenkins/workspace/maven-web-application/target/maven-web-application.war $TOMCAT_PATH/webapps/"
-                sh "cp /root/.jenkins/workspace/maven-web-application/target/maven-web-application.war $BACKUP_PATH/"
+                sh "cp -r /root/.jenkins/workspace/maven-web-application/target/maven-web-application.war $TOMCAT_PATH/webapps/"
+                sh "cp -r /root/.jenkins/workspace/maven-web-application/target/maven-web-application.war $BACKUP_PATH/"
             }
         }
         stage('continuous Deliver on Webserver') {
             steps {
                 script {
                     // Copy the WAR file to the remote server
-                    sh "scp /root/.jenkins/workspace/maven-web-application/target/maven-web-application.war $REMOTE_SERVER:$REMOTE_TOMCAT_PATH/webapps/"
+                    sh "scp -r /root/.jenkins/workspace/maven-web-application/target/maven-web-application.war $REMOTE_SERVER:$REMOTE_TOMCAT_PATH/webapps/"
                     
                     // Restart Tomcat on the remote server (adjust the command as needed)
-                    sh "ssh $REMOTE_SERVER '$REMOTE_TOMCAT_PATH/bin/shutdown.sh; $REMOTE_TOMCAT_PATH/bin/startup.sh'"
+                    sh "$REMOTE_TOMCAT_PATH/bin/startup.sh'"
                 }
             }
         }
